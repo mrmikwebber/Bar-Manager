@@ -1,0 +1,2 @@
+export type Candidate={id:string;name:string;flavors:Record<string,number>;owned:boolean};
+export function recommend(candidates:Candidate[],desiredFlavor:string){return candidates.filter(x=>x.owned).map(x=>({...x,score:x.flavors[desiredFlavor]??0})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);}
