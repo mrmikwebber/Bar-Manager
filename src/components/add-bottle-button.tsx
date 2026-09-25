@@ -1,0 +1,2 @@
+"use client";import {useState} from "react";import {addBottle} from "@/app/actions";
+export function AddBottleButton({id,owned}:{id:string;owned:boolean}){const[done,setDone]=useState(owned);const[busy,setBusy]=useState(false);return <button disabled={done||busy} className={done?"pill":"primary"} onClick={async()=>{setBusy(true);await addBottle(id);setDone(true);setBusy(false)}}>{done?"In bar":busy?"Adding…":"Add"}</button>}
